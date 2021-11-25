@@ -24,6 +24,7 @@ function App() {
 	const { state, dispatch } = useContext(UiContext);
 	const [browserIsOnline, setBrowserIsOnline ] = useState(false)
 
+
 	const notify = () => toast(state.browserIsOnline ? onlineMessage : offlineMessage );
 
 
@@ -40,7 +41,6 @@ function App() {
 		return (
 			<StyledAppContainer className='App'>
 	
-
 				{state.flashScreen && <FlashElement id={'flash-element'}></FlashElement>}
 				{state.counterSeconds && <CounterElement id={'counter-element'}>{state.counterSeconds}</CounterElement>}
 
