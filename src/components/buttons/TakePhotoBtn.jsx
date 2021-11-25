@@ -56,10 +56,10 @@ export default function TakePhotoBtn() {
  			const formData = new FormData();
 
 			formData.append('file', imageDataObject.base64data);
-			formData.append('upload_preset', import.meta.env.VITE_SECRET_CLOUDINARY_TEMPLATE);
+			formData.append('upload_preset', 'pwa_test');
 
-			const res = await fetch(import.meta.env.VITE_SECRET_CLOUDINARY_URL, {
-				method: 'post',
+			const res = await fetch('https://api.cloudinary.com/v1_1/dlqlh1f1l/image/upload', {
+				method: 'POST',
 				body: formData
 			})
 
