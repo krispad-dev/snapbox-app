@@ -23,7 +23,7 @@ ReactDOM.render(
 	document.getElementById('root')
 );
 
-/* registerServiceWorker({ mode: 'prod' }); */
+registerServiceWorker({ mode: 'prod' });
 
 
 
