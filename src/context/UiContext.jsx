@@ -155,9 +155,9 @@ export function UiContextProvider({ children }) {
 
 					exampleImages.forEach( async ({ imageUrl, city, downloadUrl, address }) => {
 
-						await state.database.clear('AppImages')
-						
-						await state.database.add('AppImages', {
+						await state.database.clear('ExampleImages')
+
+						await state.database.add('ExampleImages', {
 							imageUrl: imageUrl,
 							downloadUrl: downloadUrl,
 							city: city,
@@ -171,7 +171,7 @@ export function UiContextProvider({ children }) {
 				dispatch({ 
 
 					type: UI_ACTIONS.SET_IMAGES, 
-					payload: [...await state.database.getAll('AppImages')]});
+					payload: [...await state.database.getAll('AppImages'), ...await state.database.getAll('ExampleImages')]});
 
 			} catch (error) {
 				return 0

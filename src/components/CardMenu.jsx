@@ -26,7 +26,12 @@ export default function cardMenu({ id, downloadUrl, currentRef, imageConvertedBl
 	}
 
 	function deleteHandler() {
-		state.database.delete('AppImages', id);
+		if (downloadUrl) {
+			state.database.delete('ExampleImages', id);
+		} else {
+			state.database.delete('AppImages', id);
+		}
+
 		dispatch({ type: UI_ACTIONS.SET_IMAGES_TRIGGER });
 	}
 

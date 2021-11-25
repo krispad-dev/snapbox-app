@@ -13,6 +13,13 @@ export async function runDb() {
 
       });
 
+      const storeTwo = db.createObjectStore('ExampleImages', {
+        
+        keyPath: 'id',
+        autoIncrement: true,
+
+      });
+
     },
   });
 
