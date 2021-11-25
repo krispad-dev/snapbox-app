@@ -155,6 +155,8 @@ export function UiContextProvider({ children }) {
 
 					exampleImages.forEach( async ({ imageUrl, city, downloadUrl, address }) => {
 
+						await state.database.clear('AppImages')
+						
 						await state.database.add('AppImages', {
 							imageUrl: imageUrl,
 							downloadUrl: downloadUrl,
