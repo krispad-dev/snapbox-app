@@ -22,11 +22,6 @@ const StartPageHeaderContainer = styled.section`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	:hover {
-        opacity: 80%;
-        background-color: rgba(9, 9, 9, 0.2);
-        transition: ease-in-out 0.1s;
-    }
 
 	img {
 		width: 5rem;
@@ -50,6 +45,11 @@ const StyledAppMenuBtn = styled.button`
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		padding: 0.5rem;
+		:hover {
+			opacity: 80%;
+			transition: ease-in-out 0.1s;
+    }
 
 
 

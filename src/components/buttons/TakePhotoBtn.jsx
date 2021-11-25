@@ -72,6 +72,8 @@ export default function TakePhotoBtn() {
 
 		async function saveImage(params) {
 
+			const imageDataObject = await createBlob()
+
 			let secureUrl = ''
 
 			if (checkIfBrowserIsOnline()) {
@@ -81,7 +83,7 @@ export default function TakePhotoBtn() {
 
 
 			
-			const imageDataObject = await createBlob()
+			
 			
 			await state.database.add('AppImages', {
 				imageUrl: secureUrl ? secureUrl : null,

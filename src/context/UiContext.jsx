@@ -5,6 +5,7 @@ import { getGeoData } from '../api/geolocation';
 import { runDb } from '../database';
 import { checkGeoloaction } from '../utils/helpers'
 import { checkIfBrowserIsOnline } from '../utils/helpers'
+import { checkAppSettings } from '../utils/helpers';
 
 export const UiContext = createContext();
 
@@ -55,7 +56,7 @@ const initialState = {
 
 	// UI
 	cardMenuIsOpen: false,
-	appMenuIsOpen: true,
+	appMenuIsOpen: false,
 
 
 	cameraPageIsOpen: false,
@@ -150,7 +151,7 @@ export function UiContextProvider({ children }) {
 
 				const images = await state.database.getAll('AppImages')
 
-				if (images.length < 1) {
+				if (!checkAppSettings()) {
 
 					exampleImages.forEach( async ({ imageUrl, city, downloadUrl, address }) => {
 

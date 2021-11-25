@@ -8,10 +8,10 @@ import CardMenu from '../components/CardMenu';
 import useOutsideClick from '../hooks/useOutsideClick';
 
 export default function Card({ imageUrl, city, id, address, date, imageBlob, downloadUrl } = {}) {
+	
 	const { state, dispatch } = useContext(UiContext);
 	const [cardMenuIsOpen, setCardMenuIsOpen] = useState(false);
 
-	console.log(state.cardMenuIsOpen);
 	const ref = useRef(null);
 
 	useOutsideClick(ref, () => {

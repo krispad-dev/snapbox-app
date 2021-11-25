@@ -3,22 +3,22 @@ import { UiContext, UI_ACTIONS } from '../context/UiContext';
 import styled from 'styled-components';
 import CircleButton from './buttons/CircleButton';
 import { MdOutlineTimer3 } from 'react-icons/md';
-import { FiRepeat } from 'react-icons/fi';
 import { VscChromeClose } from 'react-icons/vsc';
 
 export default function CameraHeader() {
 	const { state, dispatch } = useContext(UiContext);
 
 	function closeCameraHandler() {
+
 		if (state.currentVideoStream || state.currentVideoStream === !undefined) {
-			setTimeout(() => {
+
 				const currentTracks = state.currentVideoStream.getTracks();
 				currentTracks.forEach(track => {
 					track.stop();
 				});
 				dispatch({ type: UI_ACTIONS.SAVE_VIDEO_STREAM, payload: null });
 				dispatch({ type: UI_ACTIONS.SET_CAMERA_PAGE_IS_ON });
-			}, 500);
+
 
 			dispatch({ type: UI_ACTIONS.SET_IMAGES_TRIGGER });
 		}
@@ -60,6 +60,13 @@ const CameraPageHeaderContainer = styled.section`
 
 	svg {
 		cursor: pointer;
+		padding: 0.5rem;
+		border-radius: 50%;
+		:hover {
+        opacity: 80%;
+        background-color: rgba(9, 9, 9, 0.2);
+        transition: ease-in-out 0.1s;
+    }
 	}
 `;
 
