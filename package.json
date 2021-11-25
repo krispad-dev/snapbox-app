@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
+    "netlify-cli": "^8.0.1",
     "vite": "^2.6.4",
     "vite-plugin-pwa": "^0.10.0",
     "workbox-precaching": "^6.4.1"
