@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { UiContext, UI_ACTIONS } from '../context/UiContext';
 import styled from 'styled-components';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
@@ -10,15 +10,18 @@ import useOutsideClick from '../hooks/useOutsideClick';
 export default function Card({ imageUrl, city, id, address, date, imageBlob, downloadUrl } = {}) {
 	const { state, dispatch } = useContext(UiContext);
 	const [cardMenuIsOpen, setCardMenuIsOpen] = useState(false);
+
+	console.log(state.cardMenuIsOpen);
 	const ref = useRef(null);
 
-
-
 	useOutsideClick(ref, () => {
+
 		if (cardMenuIsOpen) {
 			setCardMenuIsOpen(false);
-			dispatch({ type: UI_ACTIONS.SET_CARD_MENU_IS_OPEN, payload: false})
 		}
+
+
+	
 	});
 
 	let imageConvertedBlobUrl = '';
@@ -27,16 +30,19 @@ export default function Card({ imageUrl, city, id, address, date, imageBlob, dow
 		imageConvertedBlobUrl = URL.createObjectURL(imageBlob);
 	}
 
-
 	function cardMenuHandler() {
-		if (!state.cardMenuIsOpen) {
-			setCardMenuIsOpen(true);
-			dispatch({ type: UI_ACTIONS.SET_CARD_MENU_IS_OPEN, payload: true})
-			
-		}
-
-
+		console.log('hello');
+		setCardMenuIsOpen(true);
+		
 	}
+
+
+	useEffect(() => {
+
+		dispatch({ type: UI_ACTIONS.SET_CARD_MENU_IS_OPEN, payload: cardMenuIsOpen });
+
+
+	}, [cardMenuIsOpen, state.images])
 
 	return (
 		<CardContainer>
@@ -61,12 +67,19 @@ export default function Card({ imageUrl, city, id, address, date, imageBlob, dow
 					</StyledDateFigcaptionDate>
 				</StyledDateWrapper>
 
-				<button aria-label={'toggle-card-menu'} onMouseDown={() => cardMenuHandler()}>
+				<button style={{pointerEvents: state.cardMenuIsOpen && 'none' }} aria-label={'toggle-card-menu'} onMouseDown={() => cardMenuHandler()}>
 					<HiOutlineDotsHorizontal />
 				</button>
 			</CardTopContainer>
 
-			{cardMenuIsOpen && <CardMenu currentRef={ref} id={id} downloadUrl={downloadUrl} />}
+			{cardMenuIsOpen && (
+				<CardMenu
+					imageConvertedBlobUrl={imageConvertedBlobUrl}
+					currentRef={ref}
+					id={id}
+					downloadUrl={downloadUrl}
+				/>
+			)}
 
 			<StyledImage src={imageUrl ? imageUrl : imageConvertedBlobUrl} alt='Gallery photo' />
 			{downloadUrl && <a href={downloadUrl}></a>}
@@ -114,7 +127,6 @@ const CardTopContainer = styled.section`
 		font-size: 1.5rem;
 		background-color: transparent;
 		border: none;
-		
 
 		svg {
 			padding: 0.6rem;
@@ -125,8 +137,6 @@ const CardTopContainer = styled.section`
 				background-color: rgba(9, 9, 9, 0.2);
 				transition: ease-in-out 0.1s;
 			}
-
-
 		}
 	}
 `;

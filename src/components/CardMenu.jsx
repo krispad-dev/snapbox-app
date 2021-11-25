@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { BsDownload } from 'react-icons/bs';
 import { MdDeleteOutline } from 'react-icons/md';
 import CircleButton from '../components/buttons/CircleButton';
-export default function cardMenu({ id, downloadUrl, currentRef }) {
+export default function cardMenu({ id, downloadUrl, currentRef, imageConvertedBlobUrl }) {
 
 	const { state, dispatch } = useContext(UiContext);
 
@@ -33,7 +33,7 @@ export default function cardMenu({ id, downloadUrl, currentRef }) {
 	return (
 		<CardMenuContainer ref={currentRef} id={'card-menu'}>
 			<CircleButton isActive={true} icon={<MdDeleteOutline />} onClick={() => deleteHandler()} />
-			<CircleButton isActive={true} icon={<BsDownload />} onClick={() => downloadHandler()} />
+			{ imageConvertedBlobUrl && <CircleButton isActive={true} icon={<BsDownload />} onClick={() => downloadHandler()} />}
 		</CardMenuContainer>
 	);
 }
