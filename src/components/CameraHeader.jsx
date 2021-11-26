@@ -42,7 +42,11 @@ export default function CameraHeader() {
 
 			</CircleBtnWrapper>
 
-			<VscChromeClose onClick={() => closeCameraHandler()} style={{ fontSize: '2rem', marginRight: '1rem' }} />
+			<VscChromeClose 
+				style={{}} 
+				onClick={() => closeCameraHandler()} 
+				style={{ backgroundColor: '#555', fontSize: '2rem', marginRight: '1rem', padding: '0.2rem' }} 
+			/>
 		</CameraPageHeaderContainer>
 	);
 }
@@ -60,12 +64,10 @@ const CameraPageHeaderContainer = styled.section`
 
 	svg {
 		cursor: pointer;
-		padding: 0.5rem;
 		border-radius: 50%;
 		:hover {
         opacity: 80%;
-        background-color: rgba(9, 9, 9, 0.2);
-        transition: ease-in-out 0.1s;
+        transition: ease-in-out 0.2s;
     }
 	}
 `;

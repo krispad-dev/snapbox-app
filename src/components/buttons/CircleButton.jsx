@@ -11,7 +11,7 @@ export default function CircleButton({ icon, content, onClick, isActive, disable
         name={'circleBtn'} 
         disabled={disabled} 
         onClick={() => onClick()} 
-        style={!isActive ? {opacity: '50%'} : {}} 
+        style={!isActive ? {opacity: '30%'} : {}} 
         
         >
             {content} {icon}
@@ -30,7 +30,7 @@ const StyledButton = styled.button`
 	width: 35px;
     border-radius: 50%;
     background-color: transparent;
-    border: 1px solid ${props => props.theme.colors.accent};
+    border: 2px solid ${props => props.theme.colors.accent};
     display: flex;
     justify-content: center;
     align-items: center;

@@ -44,7 +44,7 @@ export default function OnboadingPage() {
 
 				<p>
 					{' '}
-					A simple photo-app using WebRTC-technologies to capture images. read more &nbsp;
+					A simple photo app using WebRTC-technologies to capture images. read more &nbsp;
 					<strong>
 						<a target='_blank' href='https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API'>
 							HERE
@@ -53,7 +53,7 @@ export default function OnboadingPage() {
 					<br />
 				</p>
 				<p>
-					On default settings images will be stored on your device.
+					On default settings, images will be stored on your device.
 				</p>
 			</StyledWelcomeArticle>
 
