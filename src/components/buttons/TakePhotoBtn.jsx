@@ -58,9 +58,16 @@ export default function TakePhotoBtn() {
 			formData.append('file', imageDataObject.base64data);
 			formData.append('upload_preset', 'pwa_test');
 
-			const res = await fetch('https://api.cloudinary.com/v1_1/dlqlh1f1l/image/upload', {
+		
+
+			const res = await fetch('/api/images', {
 				method: 'POST',
-				body: formData
+				body: JSON.stringify({data: imageDataObject.base64data}),
+				mode: 'cors', // no-cors, *cors, same-origin
+				headers: {
+					'Content-Type': 'application/json'
+				  },
+
 			})
 
 			const data = await res.json()
