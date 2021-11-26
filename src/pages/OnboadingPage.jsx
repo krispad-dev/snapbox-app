@@ -14,18 +14,18 @@ export default function OnboadingPage() {
 		location.reload();
 
 		if (acceptedGeolocation) {
-			document.cookie = 'geoLocation=true; SameSite=Strict; Secure';
+			document.cookie = 'geoLocation=true; SameSite=Strict; Secure; Max-Age=2592000';
 		} else {
-			document.cookie = 'geoLocation=false; SameSite=Strict; Secure';
+			document.cookie = 'geoLocation=false; SameSite=Strict; Secure; Max-Age=2592000';
 		}
 
 		if (acceptedNotifications) {
-			document.cookie = 'notifications=true; SameSite=Strict; Secure';
+			document.cookie = 'notifications=true; SameSite=Strict; Secure; Max-Age=2592000';
 		} else {
-			document.cookie = 'notifications=false; SameSite=None; Secure';
+			document.cookie = 'notifications=false; SameSite=None; Secure; Max-Age=2592000';
 		}
 
-		document.cookie = 'appSettings=true; SameSite=None; Secure';
+		document.cookie = 'appSettings=true; SameSite=None; Secure; Max-Age=2592000';
 	}
 
 	return (
