@@ -63,6 +63,7 @@ export default function TakePhotoBtn() {
 			const res = await fetch('/api/images/', {
 				method: 'POST',
 				body: JSON.stringify({data: imageDataObject.base64data}),
+				mode: 'cors', 
 				headers: {
 					'Content-Type': 'application/json'
 				  },
