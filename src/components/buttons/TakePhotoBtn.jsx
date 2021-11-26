@@ -67,11 +67,9 @@ export default function TakePhotoBtn() {
 				headers: {
 					'Content-Type': 'application/json'
 				  },
-
 			})
 
 			const data = await res.json()
-			console.log(data);
 			return data
 
 		}
@@ -85,7 +83,8 @@ export default function TakePhotoBtn() {
 
 			if (checkIfBrowserIsOnline() && checkOnlineStorage()) {
 				const res = await postImageToCloud();
-				secureUrl = res.secure_url;
+				secureUrl = res.data;
+				console.log(secureUrl);
 			}
 
 
