@@ -92,7 +92,7 @@ const CardContainer = styled.li`
 	border-radius: 25px;
 	background-color: ${props => props.theme.colors.overlayMenu};
 	display: grid;
-	box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.2);
 
 	grid-template-rows: auto auto;
 	grid-auto-columns: 1fr;
@@ -145,7 +145,7 @@ const StyledImage = styled.img`
 	grid-area: image;
 	object-fit: cover;
 	border-radius: 25px;
-	height: 19rem;
+	height: 25rem;
 `;
 
 const StyledDateWrapper = styled.div`

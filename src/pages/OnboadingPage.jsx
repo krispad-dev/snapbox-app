@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import Logo from '../components/logo';
 import { Switch } from '@mui/material';
 
+
+
 export default function OnboadingPage() {
 	
 	const [acceptedGeolocation, setAcceptedGeolocaton] = useState(true);
 	const [acceptedNotifications, setAcceptedNotifications] = useState(true);
+	const [onlineStorage, setOnlineStorage] = useState(false);
 
 	function acceptHandler(e) {
 
@@ -23,6 +26,12 @@ export default function OnboadingPage() {
 			document.cookie = 'notifications=true; SameSite=Strict; Secure; Max-Age=2592000';
 		} else {
 			document.cookie = 'notifications=false; SameSite=None; Secure; Max-Age=2592000';
+		}
+
+		if (onlineStorage) {
+			document.cookie = 'onlineStorage=true; SameSite=Strict; Secure; Max-Age=2592000';
+		} else {
+			document.cookie = 'onlineStorage=false; SameSite=None; Secure; Max-Age=2592000';
 		}
 
 		document.cookie = 'appSettings=true; SameSite=None; Secure; Max-Age=2592000';
@@ -44,8 +53,7 @@ export default function OnboadingPage() {
 					<br />
 				</p>
 				<p>
-					Images will be stored temporarily in Cloudinary and will be publicly available. in offline mode the
-					app will store the images locally on your device.
+					On default settings images will be stored on your device.
 				</p>
 			</StyledWelcomeArticle>
 
@@ -74,6 +82,18 @@ export default function OnboadingPage() {
 						/>
 					</StyledSwitchContainer>
 					<p>Makes it possible to let you know where the photo was taken.</p>
+
+				</StyledOptionsContainer>
+				<StyledOptionsContainer>
+					<StyledSwitchContainer>
+						<label htmlFor='accept-onlineStorage'>Upload images online</label>
+						<Switch
+							defaultChecked={false}
+							onChange={e => setOnlineStorage(!onlineStorage)}
+							id={'accept-geolocation'}
+						/>
+					</StyledSwitchContainer>
+					<p>Images will be uploaded to Cloudinary and made publicly available</p>
 				</StyledOptionsContainer>
 
 				<StyledSubmitButton>ACCEPT</StyledSubmitButton>
@@ -89,19 +109,19 @@ const OnBoardingPageContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
-	height: 100vh;
+	height: 90vh;
+	overflow-y: scroll;
 
-	small {
-		margin: 1rem;
-		margin-bottom: 5rem;
-	}
+
 
 	form {
 		margin: 0rem 1rem;
-		padding: 2em;
+		padding: 1em;
 		border-radius: 25px;
 		background-color: ${props => props.theme.colors.overlayMenu};
 		box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+		height: auto;
+
 	}
 
 	h1 {
@@ -109,7 +129,7 @@ const OnBoardingPageContainer = styled.div`
 	}
 
 	h2 {
-		margin: 0.5em;
+		margin: 0.3em;
 		@media only screen and (max-width: 600px) {
 			font-size: 1.5rem;
 			margin: 0.5rem;
@@ -128,9 +148,10 @@ const StyledSwitchContainer = styled.div`
 `;
 
 const StyledOptionsContainer = styled.div`
+
 	margin: 2em 0em;
 	p {
-		font-size: 0.8rem;
+		font-size: 0.7rem;
 		margin: 0;
 	}
 `;

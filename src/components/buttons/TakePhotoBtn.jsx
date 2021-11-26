@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { parseDate } from '../../utils/helpers';
 
 import { notifyMe } from '../../api/notification';
-import { checkIfBrowserIsOnline } from '../../utils/helpers'
+import { checkIfBrowserIsOnline , checkOnlineStorage } from '../../utils/helpers'
 
 const svg = "data:image/svg+xml,%3Csvg width='68' height='68' viewBox='0 0 68 68' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='34' cy='34' r='34' fill='%23222222'/%3E%3Crect x='34' y='4.76268' width='41.3478' height='41.3478' rx='3.5' transform='rotate(45 34 4.76268)' stroke='%2376EAD7' stroke-width='3'/%3E%3Ccircle cx='34' cy='34' r='19.5' stroke='%2376EAD7' stroke-width='3'/%3E%3C/svg%3E%0A"
 
@@ -76,7 +76,7 @@ export default function TakePhotoBtn() {
 
 			let secureUrl = ''
 
-			if (checkIfBrowserIsOnline()) {
+			if (checkIfBrowserIsOnline() && checkOnlineStorage()) {
 				const res = await postImageToCloud();
 				secureUrl = res.secure_url;
 			}

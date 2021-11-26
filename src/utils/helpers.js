@@ -55,6 +55,16 @@ export function checkNotification(params) {
       }
       
 }
+
+export function checkOnlineStorage(params) {
+
+    if (document.cookie.split(';').some((item) => item.trim().startsWith('onlineStorage=true'))) {
+        return true
+      } else {
+         return false 
+      }
+      
+}
  
 
 export function checkIfBrowserIsOnline(params) {

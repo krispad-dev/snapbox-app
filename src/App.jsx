@@ -111,7 +111,7 @@ const StyledAppContainer = styled.div`
 
 	main {
 		background-color: ${props => props.theme.colors.backgroundSurface};
-		display: flex;
+	
 		flex-grow: 1;
 		width: 100vw;
 		flex-direction: column;

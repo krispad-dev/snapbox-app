@@ -22,8 +22,8 @@ const CardsListContainer = styled.ul`
 	padding-top: 1rem;
 	width: 100%;
 	display: grid;
-	gap: 3rem;
-	grid-auto-rows: 350px;
+	gap: 1.5rem;
+	grid-auto-rows: 450px;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	overflow-y: scroll;
 	height: 85vh;
