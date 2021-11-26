@@ -46,6 +46,10 @@ export default defineConfig({
   ],
   server: {
     host: true,
+    proxy: {
+      '/api': 'https://snapbox-api.herokuapp.com/'
+    },
+
   }
 
   

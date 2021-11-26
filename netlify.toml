@@ -5,7 +5,7 @@
 
 [[redirects]]
     from = "/api/*"
-    to = "https://snapbox-api.herokuapp.com/"
+    to = "https://snapbox-api.herokuapp.com/api/"
 
 
 [[redirects]]
