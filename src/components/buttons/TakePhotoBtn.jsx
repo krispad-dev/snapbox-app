@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { parseDate } from '../../utils/helpers';
 
 import { notifyMe } from '../../api/notification';
-import { checkIfBrowserIsOnline , checkOnlineStorage } from '../../utils/helpers'
 
 const svg = "data:image/svg+xml,%3Csvg width='68' height='68' viewBox='0 0 68 68' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='34' cy='34' r='34' fill='%23222222'/%3E%3Crect x='34' y='4.76268' width='41.3478' height='41.3478' rx='3.5' transform='rotate(45 34 4.76268)' stroke='%2376EAD7' stroke-width='3'/%3E%3Ccircle cx='34' cy='34' r='19.5' stroke='%2376EAD7' stroke-width='3'/%3E%3C/svg%3E%0A"
 
@@ -20,7 +19,6 @@ const notificationsObject = {
 export default function TakePhotoBtn() {
 
 	const { state, dispatch } = useContext(UiContext);
-	const [ geoData, setGeoData ] = useState({});
 	const [ timerIsRunning, setTimerIsRunning ] = useState(false)
 
 	const canvasRef = useRef(null)
@@ -49,50 +47,11 @@ export default function TakePhotoBtn() {
 	
 		}
 
-
-		async function postImageToCloud(params) {
-
-			const imageDataObject = await createBlob()
- 			const formData = new FormData();
-
-			formData.append('file', imageDataObject.base64data);
-			formData.append('upload_preset', 'pwa_test');
-
-		
-
-			const res = await fetch('/api/images/', {
-				method: 'POST',
-				body: JSON.stringify({data: imageDataObject.base64data}),
-				mode: 'cors', 
-				headers: {
-					'Content-Type': 'application/json'
-				  },
-			})
-
-			const data = await res.json()
-			return data
-
-		}
-
-
 		async function saveImage(params) {
 
 			const imageDataObject = await createBlob()
-
-			let secureUrl = ''
-
-			if (checkIfBrowserIsOnline() && checkOnlineStorage()) {
-				const res = await postImageToCloud();
-				secureUrl = res.data;
-				console.log(secureUrl);
-			}
-
-
-			
-			
 			
 			await state.database.add('AppImages', {
-				imageUrl: secureUrl ? secureUrl : null,
 				imageBlob: imageDataObject.blob, 
 				city: state.currentGeoData ? state.currentGeoData.city : null,
 				address: state.currentGeoData ? state.currentGeoData.address : null,
@@ -130,8 +89,6 @@ export default function TakePhotoBtn() {
 						notifyMe(notificationTitle, notificationsObject)
 					}
 				
-					
-	
 					clearInterval(interval); 
 					setTimerIsRunning(false)
 				}

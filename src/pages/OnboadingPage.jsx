@@ -28,12 +28,6 @@ export default function OnboadingPage() {
 			document.cookie = 'notifications=false; SameSite=None; Secure; Max-Age=2592000';
 		}
 
-		if (onlineStorage) {
-			document.cookie = 'onlineStorage=true; SameSite=Strict; Secure; Max-Age=2592000';
-		} else {
-			document.cookie = 'onlineStorage=false; SameSite=None; Secure; Max-Age=2592000';
-		}
-
 		document.cookie = 'appSettings=true; SameSite=None; Secure; Max-Age=2592000';
 	}
 
@@ -53,7 +47,7 @@ export default function OnboadingPage() {
 					<br />
 				</p>
 				<p>
-					On default settings, images will be stored on your device.
+					Images will be stored on your device.
 				</p>
 			</StyledWelcomeArticle>
 
@@ -83,17 +77,6 @@ export default function OnboadingPage() {
 					</StyledSwitchContainer>
 					<p>Makes it possible to let you know where the photo was taken.</p>
 
-				</StyledOptionsContainer>
-				<StyledOptionsContainer>
-					<StyledSwitchContainer>
-						<label htmlFor='accept-onlineStorage'>Upload images online</label>
-						<Switch
-							defaultChecked={false}
-							onChange={e => setOnlineStorage(!onlineStorage)}
-							id={'accept-geolocation'}
-						/>
-					</StyledSwitchContainer>
-					<p>Images will be uploaded to Cloudinary and made publicly available</p>
 				</StyledOptionsContainer>
 
 				<StyledSubmitButton>ACCEPT</StyledSubmitButton>
